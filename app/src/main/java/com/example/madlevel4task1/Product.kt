@@ -4,12 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "productTable")
+@Entity(tableName = "product_table")
 data class Product(
-    @ColumnInfo(name = "reminder")
+    @ColumnInfo(name = "product")
     var productText: String,
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Long? = null
+    var id: Long? = null,
+
+    @ColumnInfo(name = "quantity")
+    var quantity: Int
 )
