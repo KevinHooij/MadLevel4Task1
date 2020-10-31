@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_product.view.*
 
 class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
@@ -27,8 +28,9 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
 
         //  val binding = ItemReminderBinding.bind(itemView)
 
-        fun databind(reminder: Product) {
-            //itemView.tvReminder.text = reminder.reminderText
+        fun databind(product: Product) {
+            itemView.tvName.text = product.productText
+            itemView.tvQuantity.text = product.quantity.toString()
         }
     }
 
