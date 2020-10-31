@@ -54,6 +54,10 @@ class ListFragment : Fragment() {
             showAddProductdialog()
         }
 
+        fabRemove.setOnClickListener{
+            removeAllProducts()
+        }
+
     }
 
     private fun initRv() {
@@ -126,6 +130,8 @@ class ListFragment : Fragment() {
             this@ListFragment.products.addAll(shoppingList)
             this@ListFragment.productAdapter.notifyDataSetChanged()
         }
+
+
     }
 
 
@@ -158,5 +164,15 @@ class ListFragment : Fragment() {
         }
         return ItemTouchHelper(callback)
     }
+
+    private fun removeAllProducts() {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                productRepository.deleteAllProducts()
+            }
+            getShoppingListFromDatabase()
+        }
+    }
+
 
 }
